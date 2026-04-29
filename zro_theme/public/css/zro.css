@@ -1,0 +1,193 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * ZRO Theme — Desk (logged-in app) overrides
+ * Tokens come from zro-site DESIGN.md:
+ *   graphite-ink #212121, glacier-surface #EAEFF5, drafting-white #FFFFFF
+ *   steel-greys, ledger-green for status only.
+ * ────────────────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  /* Frappe v15 uses --primary, --bg-color, --text-color tokens. */
+  --primary:                 #212121;
+  --primary-color:           #212121;
+  --btn-primary:             #212121;
+  --btn-primary-hover:       #000000;
+
+  --text-color:              #212121;
+  --text-on-primary:         #FFFFFF;
+  --text-light:              #6B6B6B;
+  --text-muted:              #8A8A8A;
+
+  --bg-color:                #FFFFFF;
+  --bg-light-gray:           #F6F8FB;
+  --fg-color:                #FFFFFF;
+  --fg-hover:                #F6F8FB;
+  --shadow-base:             0 4px 12px rgba(33,33,33,0.05), 0 1px 2px rgba(33,33,33,0.04);
+
+  --border-color:            #E6E9EE;
+  --border-radius:           4px;          /* Norm-Studio square-ish corners */
+  --border-radius-md:        6px;
+  --border-radius-lg:        10px;
+
+  --link-color:              #212121;
+  --link-hover-color:        #000000;
+
+  --navbar-height:           56px;
+
+  /* Frappe's accent for selected list rows / focus rings */
+  --pacman-color:            #212121;
+  --gray-100:                #F6F8FB;
+  --gray-200:                #E6E9EE;
+  --gray-300:                #D6D9DE;
+  --gray-400:                #B5B5B5;
+  --gray-500:                #8A8A8A;
+  --gray-600:                #6B6B6B;
+  --gray-700:                #494949;
+  --gray-800:                #2F2F2F;
+  --gray-900:                #212121;
+
+  --blue-100:                #F6F8FB;
+  --blue-200:                #EAEFF5;
+  --blue-300:                #D6D9DE;
+  --blue-400:                #6B6B6B;
+  --blue-500:                #212121;
+  --blue-600:                #212121;
+  --blue-700:                #000000;
+}
+
+/* Dark mode token override — keep the same monochrome character */
+[data-theme="dark"] {
+  --primary:                 #FFFFFF;
+  --primary-color:           #FFFFFF;
+  --btn-primary:             #FFFFFF;
+  --text-on-primary:         #212121;
+  --link-color:              #EAEFF5;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────── */
+body, .navbar, .form-control, .btn, .desk-page, .layout-side-section,
+.layout-main-section {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  letter-spacing: -0.005em;
+}
+
+/* Frappe sometimes hardcodes Inter — force our stack. */
+.h1, .h2, .h3, h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  letter-spacing: -0.018em;
+  font-weight: 700;
+  color: #212121;
+}
+
+/* Mono numerics in lists / reports — Bloomberg-terminal feel */
+.list-row .indicator-pill, .indicator,
+.report-summary-value, .grid-static-col, .frappe-control[data-fieldtype="Currency"] input,
+.frappe-control[data-fieldtype="Float"] input, .frappe-control[data-fieldtype="Int"] input {
+  font-family: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  font-feature-settings: "tnum";
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────────── */
+.navbar {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E6E9EE !important;
+  box-shadow: none;
+}
+.navbar-brand,
+.navbar .navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #212121 !important;
+}
+
+/* Hide the default Frappe brand text — our logo speaks for itself */
+.navbar .app-logo + span.navbar-brand-text { display: none; }
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn-primary, .btn.btn-primary {
+  background: #212121 !important;
+  border-color: #212121 !important;
+  color: #FFFFFF !important;
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover, .btn.btn-primary:hover {
+  background: #000000 !important;
+  border-color: #000000 !important;
+}
+.btn-secondary, .btn.btn-default {
+  background: #FFFFFF !important;
+  border-color: #D6D9DE !important;
+  color: #212121 !important;
+}
+.btn-secondary:hover, .btn.btn-default:hover {
+  border-color: #212121 !important;
+  background: #F6F8FB !important;
+}
+
+/* ── Sidebar / Module Switcher ─────────────────────────────────────── */
+.layout-side-section {
+  background: #F6F8FB;
+  border-right: 1px solid #E6E9EE;
+}
+.standard-sidebar-item.selected,
+.standard-sidebar-item:hover {
+  background: rgba(33,33,33,0.06);
+  color: #212121;
+}
+
+/* ── Cards / Sections ──────────────────────────────────────────────── */
+.frappe-card, .form-section, .section-body, .dashboard-section {
+  background: #FFFFFF;
+  border: 1px solid #E6E9EE;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(33,33,33,0.04);
+}
+
+/* ── Status indicators — keep semantic colors but tone them down ───── */
+.indicator.green, .indicator-pill.green { color: #1F7A3C; background: rgba(31,122,60,0.10); }
+.indicator.red,   .indicator-pill.red   { color: #B01C1C; background: rgba(176,28,28,0.10); }
+.indicator.orange,.indicator-pill.orange{ color: #B5651D; background: rgba(181,101,29,0.10); }
+.indicator.gray,  .indicator-pill.gray  { color: #6B6B6B; background: #F6F8FB; }
+
+/* ── Footer / "Powered by Frappe" — replace with ZRO ───────────────── */
+.web-footer .powered, footer .powered { display: none; }
+.web-footer::after {
+  content: "Built by ZRO Lab SA · Geneva · self-hosted on your own infrastructure";
+  display: block;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8A8A8A;
+  padding: 16px 0;
+}
+
+/* ── Form controls — tighter, more confident ───────────────────────── */
+.form-control, .input-with-feedback {
+  border: 1px solid #D6D9DE;
+  border-radius: 6px;
+  background: #FFFFFF;
+  color: #212121;
+}
+.form-control:focus {
+  border-color: #212121;
+  box-shadow: 0 0 0 3px rgba(33,33,33,0.10);
+}
+
+/* ── Workspace cards (the new ERPNext landing) ─────────────────────── */
+.workspace-shortcut-card, .number-card, .chart-container {
+  background: #FFFFFF;
+  border: 1px solid #E6E9EE;
+  border-radius: 10px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.workspace-shortcut-card:hover, .number-card:hover {
+  border-color: #212121;
+  box-shadow: 0 4px 12px rgba(33,33,33,0.06);
+}
+
+/* ── Onboarding banner / desktop welcome — neutralize ─────────────── */
+.onboarding-card { background: #F6F8FB; border-color: #E6E9EE; }

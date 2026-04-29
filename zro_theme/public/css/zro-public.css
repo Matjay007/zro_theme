@@ -1,0 +1,128 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * ZRO Public — login page + public website overrides
+ * ────────────────────────────────────────────────────────────────────── */
+
+/* ── Login page rebuild ──────────────────────────────────────────────
+ * Default Frappe login: tiny centered card on grey gradient — generic.
+ * ZRO login: full-bleed construction photo on the left, white form panel
+ * on the right. Matches the marketing site's Norm Studio aesthetic so
+ * users moving from zrolab.com → www.zrolab.com see continuity.
+ */
+body.no-sidebar.is-login-page,
+.for-login .page_content {
+  background: #FFFFFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+
+.for-login .page_content {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+@media (min-width: 900px) {
+  .for-login .page_content {
+    grid-template-columns: 1fr 480px;
+  }
+  /* Left rail: construction site photo, full-bleed.
+     Image is shipped by zro_theme's public/images/. */
+  .for-login .page_content::before {
+    content: "";
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.30) 40%, rgba(10,10,10,0.65) 100%),
+      url("/assets/zro_theme/images/login-hero.jpg") center 40% / cover no-repeat;
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+/* Form panel wrapper — kill the centered card, fill the right rail */
+.for-login .login-content,
+.for-login .form-signin {
+  background: #FFFFFF;
+  box-shadow: none;
+  border: none;
+  width: 100%;
+  max-width: none;
+  padding: 64px 56px;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
+@media (min-width: 900px) {
+  .for-login .login-content,
+  .for-login .form-signin {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+/* Heading */
+.for-login h4, .for-login .text-center h4 {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #212121;
+  text-align: left;
+  margin: 0 0 8px;
+}
+
+/* Subtitle */
+.for-login .text-muted {
+  font-size: 14px;
+  color: #6B6B6B;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+/* Inputs */
+.for-login .form-control {
+  border: 1px solid #D6D9DE;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  height: 44px;
+}
+.for-login .form-control:focus {
+  border-color: #212121;
+  box-shadow: 0 0 0 3px rgba(33,33,33,0.08);
+}
+
+/* Primary CTA */
+.for-login .btn-login,
+.for-login .btn-primary {
+  background: #212121 !important;
+  border-color: #212121 !important;
+  color: #FFFFFF !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 12px;
+  border-radius: 6px;
+  height: 44px;
+  width: 100%;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.for-login .btn-login:hover,
+.for-login .btn-primary:hover {
+  background: #000000 !important;
+}
+
+/* Forgot password / signup links */
+.for-login a.forgot-password-link,
+.for-login a.signup-link {
+  color: #212121;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 13px;
+}
+
+/* ── Public website (docs, about) chrome ────────────────────────────── */
+.web-footer { background: #F6F8FB; border-top: 1px solid #E6E9EE; }
